@@ -17,20 +17,18 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (true)
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="http://cook-book.local/login">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
+            <div class="top-right links">
+                @auth
+                    <a href="{{ route('index') }}">Home</a>
+                    <a href="{{ route('logout') }}">Logout</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+                @endauth
+                    <a href="{{ route('recipe.index') }}">Список</a>
+                    <a href="{{ route('recipe.show', 1) }}">Просмотр</a>
+                    <a href="{{ route('recipe.create') }}">Создание</a>
+                    <a href="{{ route('recipe.edit', 1) }}">Редактирование</a>
+            </div>
             <div class="content">
                 @yield('content')
             </div>
