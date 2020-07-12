@@ -17,7 +17,7 @@ class CreateTblRecipe extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->integer('priority')->nullable();
+            $table->tinyInteger('priority')->nullable();
             $table->timestampsTz();
             $table->softDeletesTz();
         });
