@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 /**
@@ -15,7 +16,7 @@ class RecipeController extends Controller
         return view('recipe.index');
     }
 
-    public function show($recipe)
+    public function show(Recipe $recipe)
     {
         return view('recipe.show');
     }
@@ -30,17 +31,17 @@ class RecipeController extends Controller
         return redirect()->route('recipe.index');
     }
 
-    public function edit($recipe)
+    public function edit(Recipe $recipe)
     {
         return view('recipe.edit');
     }
 
-    public function update($recipe)
+    public function update(Recipe $recipe)
     {
         return redirect()->route('recipe.show');
     }
 
-    public function delete($recipe)
+    public function delete(Recipe $recipe)
     {
         return redirect()->route('recipe.index');
     }
