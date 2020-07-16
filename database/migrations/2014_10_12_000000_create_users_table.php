@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->timestampsTz();
         });
 
-        DB::table('user')->insert([
+        DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'igtarako@gmail.com',
             'password' => \Illuminate\Support\Facades\Hash::make('22072011'),
@@ -39,6 +39,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('users');
     }
 }

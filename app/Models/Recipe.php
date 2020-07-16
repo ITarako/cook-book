@@ -11,9 +11,9 @@ use Carbon\Carbon;
  *
  * @package App\Models
  * @property int $id
- * @property string $title
+ * @property string name
  * @property string $description
- * @property int|null $priority
+ * @property int $category_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
@@ -31,10 +31,18 @@ use Carbon\Carbon;
  * @method static Recipe withTrashed()
  * @method static Recipe withoutTrashed()
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Recipe whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Recipe whereName($value)
  */
 class Recipe extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'recipe';
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
