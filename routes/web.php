@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,9 @@ use Illuminate\Support\Facades\Route;
 //Route::redirect('/redirect', '/');
 //Route::permanentRedirect('/google', 'https://google.com');
 
-Route::get('/', 'SiteController@index')->name('index');
-Route::match(['get', 'post'], '/login', 'SiteController@login')->name('login');
-Route::get('/logout', 'SiteController@logout')->name('logout');
 
 Route::resource('recipe', 'RecipeController');
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');

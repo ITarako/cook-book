@@ -30,6 +30,7 @@ use Carbon\Carbon;
  * @method static Recipe whereUpdatedAt($value)
  * @method static Recipe withTrashed()
  * @method static Recipe withoutTrashed()
+ * @mixin \Eloquent
  */
 class Recipe extends Model
 {

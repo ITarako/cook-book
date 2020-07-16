@@ -27,6 +27,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static User wherePassword($value)
  * @method static User whereRememberToken($value)
  * @method static User whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class User extends Authenticatable
 {
