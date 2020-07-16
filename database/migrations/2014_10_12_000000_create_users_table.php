@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
         DB::table('user')->insert([
             'name' => 'admin',
             'email' => 'igtarako@gmail.com',
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => \Illuminate\Support\Facades\Hash::make('22072011'),
             'remember_token' => Str::random(10),
         ]);
     }
