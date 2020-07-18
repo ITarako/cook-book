@@ -41,6 +41,20 @@ class CategoryService
     }
 
     /**
+     * @return array
+     */
+    public function list()
+    {
+        $collection = $this->categoryRepository->list();
+
+        $keyed = $collection->mapWithKeys(function ($item) {
+            return [$item['id'] => $item['name']];
+        });
+
+        return $keyed->all();
+    }
+
+    /**
      * @param array $data
      * @return Category
      */

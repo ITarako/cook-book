@@ -29,6 +29,14 @@ class CategoryRepository
     }
 
     /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function list()
+    {
+        return Category::orderBy('name')->get();
+    }
+
+    /**
      * @param array $data
      * @return Category
      */

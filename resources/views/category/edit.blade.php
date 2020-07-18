@@ -3,6 +3,12 @@
 
 @section('content')
     <div class="container">
+        @include('blocks.breadcrumbs.index', [
+           'breadcrumbs' => [
+               ['title' => 'Категории', 'url' => route('category.index')],
+               ['title' => 'Редактирование']
+           ]
+       ])
         <div class="card">
             <div class="card-header">Редактировать категорию</div>
             <div class="card-body">

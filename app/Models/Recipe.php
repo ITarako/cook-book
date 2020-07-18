@@ -33,7 +33,6 @@ use Carbon\Carbon;
  * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Recipe whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Recipe whereName($value)
- * @property string $name
  * @property-read \App\Models\Category $category
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Ingredient[] $ingredients
  * @property-read int|null $ingredients_count
@@ -41,6 +40,8 @@ use Carbon\Carbon;
 class Recipe extends Model
 {
     use SoftDeletes;
+
+    public $fillable = ['name', 'description', 'category_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

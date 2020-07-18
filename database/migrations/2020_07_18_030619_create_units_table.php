@@ -29,7 +29,7 @@ class CreateUnitsTable extends Migration
         });
 
         foreach ($this->list as $item) {
-            DB::table('categories')->insert([
+            DB::table('units')->insert([
                 'name' => $item,
             ]);
         }

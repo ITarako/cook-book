@@ -13,6 +13,9 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('recipe.index') }}">Рецепты</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('category.index') }}">Категории</a>
                 </li>
             </ul>
