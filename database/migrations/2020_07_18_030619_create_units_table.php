@@ -5,14 +5,15 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateCategoriesTable extends Migration
+class CreateUnitsTable extends Migration
 {
     private $list = [
-        'Супы',
-        'Вторые блюда',
-        'Салаты',
-        'Выпечка',
-        'Сладости',
+        'мг',
+        'мл',
+        'чайная ложка',
+        'столовая ложка',
+        'стакан',
+        'щепотка',
     ];
 
     /**
@@ -22,10 +23,9 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->timestampsTz();
+            $table->string('name');
         });
 
         foreach ($this->list as $item) {
@@ -42,6 +42,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('units');
     }
 }
