@@ -2,6 +2,7 @@
 
 namespace App\Services\Recipe;
 
+use App\Services\Ingredient\IngredientService;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Recipe;
 use App\Services\Recipe\Repositories\RecipeRepository;
@@ -13,14 +14,17 @@ use App\Services\Recipe\Repositories\RecipeRepository;
 class RecipeService
 {
     public $recipeRepository;
+    public $ingredientService;
 
     /**
      * RecipeService constructor.
      * @param $recipeRepository
+     * @param $ingredientService
      */
-    public function __construct(RecipeRepository $recipeRepository)
+    public function __construct(RecipeRepository $recipeRepository, IngredientService $ingredientService)
     {
         $this->recipeRepository = $recipeRepository;
+        $this->ingredientService = $ingredientService;
     }
 
     /**
@@ -56,6 +60,9 @@ class RecipeService
      */
     public function updateRecipe(Recipe $recipe, array $data): Recipe
     {
-        return $this->recipeRepository->updateFromArray($recipe, $data);
+        $this->recipeRepository->updateFromArray($recipe, $data);
+        $this->ingredientService->saveForRecipe($recipe, $data['ingredients']);
+
+        return $recipe;
     }
 }

@@ -30,6 +30,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Ingredient extends Model
 {
+    public $fillable = ['name', 'count', 'unit_id', 'recipe_id'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

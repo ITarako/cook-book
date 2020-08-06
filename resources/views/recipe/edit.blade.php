@@ -19,7 +19,7 @@
                             {{ Form::label('name', 'Название') }}
                             {{ Form::text('name', $model->name, ['class'=> 'form-control' . ($errors->has('name') ? ' is-invalid' : '')]) }}
                             @error('name')
-                                <span class="invalid-feedback" role="alert">
+                            <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                  </span>
                             @enderror
@@ -41,7 +41,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
+                        @include('recipe.blocks.ingredient')
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('description', 'Способ приготовления') }}
                             {{ Form::textarea('description', $model->description, ['class'=> 'form-control' . ($errors->has('description') ? ' is-invalid' : '')]) }}
