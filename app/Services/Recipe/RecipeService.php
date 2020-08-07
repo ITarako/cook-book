@@ -65,4 +65,20 @@ class RecipeService
 
         return $recipe;
     }
+
+    /**
+     * @return Recipe|mixed|null
+     */
+    public function getRandom()
+    {
+        $all = $this->recipeRepository->get();
+        if (empty($all)) {
+            return null;
+        }
+
+        $count = $all->count();
+        $idx = rand(0, $count - 1);
+
+        return $all[$idx];
+    }
 }

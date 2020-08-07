@@ -2,10 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\Recipe\RecipeService;
 
+/**
+ * Class HomeController
+ * @package App\Http\Controllers
+ */
 class HomeController extends Controller
 {
+    public $recipeService;
+
+    /**
+     * HomeController constructor.
+     * @param $recipeService
+     */
+    public function __construct(RecipeService $recipeService)
+    {
+        $this->recipeService = $recipeService;
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -13,6 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $recipe = $this->recipeService->getRandom();
+        return view('home', [
+            'randomRecipe' => $recipe,
+        ]);
     }
 }

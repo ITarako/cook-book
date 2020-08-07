@@ -29,6 +29,14 @@ class RecipeRepository
     }
 
     /**
+     * @return Recipe[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function get()
+    {
+        return Recipe::get();
+    }
+
+    /**
      * @param array $data
      * @return Recipe
      */
