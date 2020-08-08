@@ -43,4 +43,3 @@ services:
   node:
     image: "node:14.7"
     container_name: node
-    restart: always
