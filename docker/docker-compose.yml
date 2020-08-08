@@ -12,6 +12,9 @@ services:
       POSTGRES_DB: cook-book
     command: postgres -c 'datestyle=iso,dmy'
   php:
+    build:
+      context: ./
+      dockerfile: images/php7.3
     image: "php:7.3-fpm"
     container_name: php
     restart: always
