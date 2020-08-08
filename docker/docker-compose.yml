@@ -49,3 +49,4 @@ services:
     working_dir: /opt/project
     volumes:
       - '../.././project:/opt/project'
+    tty: true
