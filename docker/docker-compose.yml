@@ -33,6 +33,7 @@ services:
     volumes:
       - '../.././project:/opt/project:ro'
       - '../.././logs:/opt/logs'
+      - './nginx.conf:/etc/nginx/conf.d/default.conf:ro'
       - './nginx.conf:/etc/nginx/conf.d/default.template:ro'
     environment:
       SERVER_NAME: 'baseapp.local'
