@@ -1,7 +1,7 @@
 version: '2'
 services:
   postgres:
-    image: postgres/11.8
+    image: "postgres:11.8"
     container_name: postgres
     restart: always
     volumes:
@@ -12,7 +12,7 @@ services:
       POSTGRES_DB: cook-book
     command: postgres -c 'datestyle=iso,dmy'
   php:
-    image: php/7.3-fpm
+    image: "php:7.3-fpm"
     container_name: php
     restart: always
     working_dir: /opt/project
@@ -24,7 +24,7 @@ services:
     links:
       - postgres
   nginx:
-    image: nginx/1.19.1
+    image: "nginx:1.19.1"
     container_name: nginx
     restart: always
     volumes:
@@ -41,6 +41,6 @@ services:
       - 80:80
       - 443:443
   node:
-    image: node/14.7
+    image: "node:14.7"
     container_name: node
     restart: always
