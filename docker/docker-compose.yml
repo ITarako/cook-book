@@ -14,7 +14,7 @@ services:
   php:
     build:
       context: ./
-      dockerfile: images/php7.3
+      dockerfile: images/php7.3/Dockerfile
     image: "php:7.3-fpm"
     container_name: php
     restart: always
