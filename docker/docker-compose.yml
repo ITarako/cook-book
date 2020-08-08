@@ -46,3 +46,6 @@ services:
   node:
     image: "node:14.7"
     container_name: node
+    working_dir: /opt/project
+    volumes:
+      - '../.././project:/opt/project'
