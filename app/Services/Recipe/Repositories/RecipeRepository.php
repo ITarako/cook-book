@@ -43,8 +43,7 @@ class RecipeRepository
     public function createFromArray(array $data): Recipe
     {
         $recipe = new Recipe();
-        $recipe->create($data);
-        return $recipe;
+        return $recipe->create($data);
     }
 
     /**

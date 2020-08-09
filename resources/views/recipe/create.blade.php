@@ -41,7 +41,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
+                        @include('recipe.blocks.ingredient')
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('description', 'Способ приготовления') }}
                             {{ Form::textarea('description', null, ['class'=> 'form-control' . ($errors->has('description') ? ' is-invalid' : '')]) }}

@@ -43,8 +43,7 @@ class CategoryRepository
     public function createFromArray(array $data): Category
     {
         $country = new Category();
-        $country->create($data);
-        return $country;
+        return $country->create($data);
     }
 
     /**

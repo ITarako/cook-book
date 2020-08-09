@@ -54,23 +54,16 @@ class IngredientService
 
     /**
      * @param Recipe $recipe
-     * @param $data
+     * @param $records
      * @throws \Exception
      */
-    public function saveForRecipe(Recipe $recipe, $data)
+    public function saveForRecipe(Recipe $recipe, $records)
     {
         $old = $recipe->ingredients;
         foreach ($old as $ingredient) {
             $this->deleteIngredient($ingredient);
         }
 
-        $length = count($data['name']);
-        for ($i = 0; $i < $length; $i++) {
-            $datum['name'] = $data['name'][$i];
-            $datum['count'] = $data['count'][$i];
-            $datum['unit_id'] = $data['unit_id'][$i];
-            $datum['recipe_id'] = $recipe->id;
-            $this->storeIngredient($datum);
-        }
+        $recipe->ingredients()->createMany($records);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Recipe\CreateRequest;
 use App\Http\Requests\Recipe\UpdateRequest;
 use App\Models\Recipe;
 use App\Services\Category\CategoryService;
@@ -55,21 +56,19 @@ class RecipeController extends Controller
     {
         return view('recipe.create', [
             'categoryList' => $this->categoryService->list(),
+            'unitList' => $this->unitService->list(),
+            'ingredients' => [],
         ]);
     }
 
     /**
-     * @param Request $request
+     * @param CreateRequest $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $data = $this->validate($request, [
-            'name' => ['required', 'max:255'],
-            'category_id' => ['required', 'exists:categories,id'],
-            'description' => ['required', 'max:5000'],
-        ]);
+        $data = $request->validated();
         $this->recipeService->storeRecipe($data);
 
         return redirect(route('recipe.index'));

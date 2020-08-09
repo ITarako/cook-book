@@ -13,6 +13,7 @@ class CreateUnitsTable extends Migration
         'чайная ложка',
         'столовая ложка',
         'стакан',
+        'штука',
         'щепотка',
     ];
 

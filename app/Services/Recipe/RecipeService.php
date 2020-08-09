@@ -50,7 +50,10 @@ class RecipeService
      */
     public function storeRecipe(array $data): Recipe
     {
-        return $this->recipeRepository->createFromArray($data);
+        $recipe = $this->recipeRepository->createFromArray($data);
+        $recipe->ingredients()->createMany($data['ingredients']);
+
+        return $recipe;
     }
 
     /**
@@ -72,11 +75,11 @@ class RecipeService
     public function getRandom()
     {
         $all = $this->recipeRepository->get();
-        if (empty($all)) {
+        $count = $all->count();
+        if (empty($count)) {
             return null;
         }
 
-        $count = $all->count();
         $idx = rand(0, $count - 1);
 
         return $all[$idx];
