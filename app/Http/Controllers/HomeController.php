@@ -28,9 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $recipe = $this->recipeService->getRandom();
+        $recipes = $this->recipeService->getRandom();
         return view('home', [
-            'randomRecipe' => $recipe,
+            'recipes' => $recipes,
         ]);
     }
 }

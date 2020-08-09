@@ -70,18 +70,23 @@ class RecipeService
     }
 
     /**
-     * @return Recipe|mixed|null
+     * @param int $need
+     * @return array
      */
-    public function getRandom()
+    public function getRandom($need = 3)
     {
+        $models = [];
         $all = $this->recipeRepository->get();
         $count = $all->count();
         if (empty($count)) {
-            return null;
+            return $models;
         }
 
-        $idx = rand(0, $count - 1);
+        while (count($models) < $need) {
+            $idx = rand(0, $count - 1);
+            $models[] = $all[$idx];
+        }
 
-        return $all[$idx];
+        return $models;
     }
 }
