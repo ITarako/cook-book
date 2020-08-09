@@ -9,6 +9,16 @@
                 @if($recipes)
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="2000">
                         <div class="carousel-inner">
+                            <ol class="carousel-indicators">
+                                @foreach($recipes as $idx => $recipe)
+                                <li
+                                    style="background-color: #3490dc"
+                                    data-target="#carouselExampleSlidesOnly"
+                                    data-slide-to="{{$idx}}"
+                                    class="<?= $loop->first ? 'active' : '' ?>">
+                                </li>
+                                @endforeach
+                            </ol>
                         @foreach($recipes as $recipe)
                             <div class="carousel-item <?= $loop->first ? 'active' : '' ?>">
                                 <div class="jumbotron">
